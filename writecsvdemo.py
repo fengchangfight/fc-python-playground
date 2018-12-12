@@ -1,3 +1,5 @@
+
+
 import csv
 
 inputfile = "/Users/xiefengchang/dev/synonymous.txt"
@@ -5,7 +7,7 @@ lineno=1
 
 output="./real_train.csv"
 
-with open(inputfile,'r+', encoding="utf-8") as f, open(output, 'w', newline='') as csvfile:
+with open(inputfile,'r+', encoding="utf-8") as f, open(output, mode='w', newline='',encoding='utf-8') as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=',',
                             quoting=csv.QUOTE_ALL)
     spamwriter.writerow(['id', 'qid1', 'qid2', 'question1', 'question2', 'is_duplicate'])
@@ -26,7 +28,7 @@ with open(inputfile,'r+', encoding="utf-8") as f, open(output, 'w', newline='') 
         outlinearr.append(arr[1].strip())
         outlinearr.append("1")
 
-        spamwriter.writerow(outlinearr)
+        spamwriter.writerow([s for s in outlinearr])
 
         lineno+=1
 
